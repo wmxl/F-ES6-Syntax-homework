@@ -1,5 +1,18 @@
 const inject = (items, sections) => {
-    const output = ['section1', 'item1', 'item2', 'section2', 'item3', 'item4', 'item5'];
+    const output = items;
+
+    for(const e of sections){
+        let now = e.index;
+        for(const a of sections){
+            if(a.index < e.index){
+                now++;
+            }
+            if(e.index == a.index) break;
+        }
+
+        items.splice(now, 0, e.content);
+
+    }
     return output;
 }
 export { inject };
